@@ -6,6 +6,7 @@ templates = jinja
 FROM = -c local = agentless
 yamllint = cli tool to check YML ident
 special group = all
+'*' = all
 
 ---> PING
 
