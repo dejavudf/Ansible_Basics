@@ -5,6 +5,7 @@ List module: ansible-doc -l
 templates = jinja
 FROM = -c local = agentless
 yamllint = cli tool to check YML ident
+special group = all
 
 ---> PING
 
@@ -12,21 +13,22 @@ yamllint = cli tool to check YML ident
 # ansible GROUP -i INVENTORY_FILE -M MODULE -c FROM GROUP
 ansible nat -i host_sample_inventory -m ping -c local
 
----> RAW COMMAND
+---> RAW COMMANDS
 
 command (raw):
 #ansible -i INVENTORY_FILE -m MODULE -A COMMAND -U USER -K GETPASSWORDPROMPT
 ansible ubuntu -i ahosts -m raw -a "ifconfig" -u alex -k -c local
 ansible -i ahosts -m raw -a "ifconfig" -u alex -k -c local ubuntu
 
----> IOS COMMAND
+---> IOS COMMANDS
 
 command (not raw):
 ansible -i ./ahosts -m ios_command -a "commands='show version'" -c local -u alex -k ios
+ansible -i ./ahosts -m ios_command -a "commands='show run'" -c local -u alex -k teste
 
 ---> IOS FACTS
 
-command: get info
+ansible -i ./ahosts -m ios_facts -c local -u alex -k teste
 ansible -i ahosts -m ios_facts 192.168.0.49 -u alex -k
 ansible -i ahosts -m ios_facts -u alex -k ios (info inside hostfile)
 ansible -i ahosts -m ios_facts -c local -u alex -k ios
