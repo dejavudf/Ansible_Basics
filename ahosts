@@ -1,0 +1,28 @@
+#[groups] (group of hosts)
+#hostname (hosts or IP addres)
+#IP (hosts or IP addres)
+[ios]
+
+[iou]
+
+[exos]
+
+[pfsense]
+
+[vios]
+
+[linux]
+
+[nat]
+192.168.0.1
+192.168.0.248
+192.168.0.249
+192.168.0.250
+192.168.0.251
+192.168.0.252
+192.168.0.253
+192.168.0.254
+
+[ubuntu]
+192.168.0.251
+

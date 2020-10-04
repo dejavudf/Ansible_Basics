@@ -1,0 +1,43 @@
+### C O M M A N D S  W I T H O U T  P L A Y B O O K S ###
+
+Tips:
+List module: ansible-doc -l
+templates = jinja
+FROM = -c local = agentless
+yamllint = cli tool to check YML ident
+
+---> PING
+
+# ansible GROUP -i INVENTORY_FILE -M MODULE -c FROM
+# ansible GROUP -i INVENTORY_FILE -M MODULE -c FROM GROUP
+ansible nat -i host_sample_inventory -m ping -c local
+
+---> RAW COMMAND
+
+command (raw):
+#ansible -i INVENTORY_FILE -m MODULE -A COMMAND -U USER -K GETPASSWORDPROMPT
+ansible ubuntu -i ahosts -m raw -a "ifconfig" -u alex -k -c local
+ansible -i ahosts -m raw -a "ifconfig" -u alex -k -c local ubuntu
+
+---> IOS COMMAND
+
+command (not raw):
+ansible -i ./ahosts -m ios_command -a "commands='show version'" -c local -u alex -k ios
+
+---> IOS FACTS
+
+command: get info
+ansible -i ahosts -m ios_facts 192.168.0.49 -u alex -k
+ansible -i ahosts -m ios_facts -u alex -k ios (info inside hostfile)
+ansible -i ahosts -m ios_facts -c local -u alex -k ios
+
+
+### C O M M A N D S  W I T H   P L A Y B O O K S ###
+
+---> WITH PLAYBOOK:
+
+ansible-playbook playbook_bck_ios.yml -i ./ahosts -M ios_command -u alex -k
+ansible-playbook playbook_bck_ios.yml -i ./ahosts -u alex -k
+
+ansible ios -i ./hosts -m ping -c local
+

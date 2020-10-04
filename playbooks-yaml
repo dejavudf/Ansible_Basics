@@ -1,0 +1,3 @@
+---> PING
+
+ansible nat -i host_sample_inventory -m ping -c local
