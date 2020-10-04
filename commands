@@ -10,7 +10,7 @@ special group = all
 ---> PING
 
 # ansible GROUP -i INVENTORY_FILE -M MODULE -c FROM
-# ansible GROUP -i INVENTORY_FILE -M MODULE -c FROM GROUP
+# ansible GROUP/HOSTNAME -i INVENTORY_FILE -M MODULE -c FROM GROUP/HOSTNAME
 ansible nat -i host_sample_inventory -m ping -c local
 
 ---> RAW COMMANDS
