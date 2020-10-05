@@ -1,0 +1,7 @@
+-m ping (ping hosts)
+-m setup (show configuration on linux)
+-m raw (execute command)
+-m ios_command (execute ios command)
+-m ios_facts (get ios info)
+-m file (handle with files)
+-m service (handle with services)
