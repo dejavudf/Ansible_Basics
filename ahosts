@@ -1,17 +1,30 @@
 #[groups] (group of hosts)
 #hostname (hosts or IP addres)
 #IP (hosts or IP addres)
+[all:vars]
+#ansible_connection=local
+
 [ios]
+192.168.111.206
+
+[iou:vars]
+ansible_user=alex
+ansible_password=Ab123456
+ansible_connection=local
 
 [iou]
-
-[exos]
+192.168.111.202
+192.168.111.204
 
 [pfsense]
 
 [vios]
+192.168.111.203
+192.168.111.207
 
-[linux]
+[linux:children]
+ubuntu
+testeubuntu
 
 [nat]
 192.168.0.1 ansible_connection=local
@@ -23,11 +36,30 @@
 192.168.0.253 ansible_connection=local
 192.168.0.254 ansible_port=22
 
+[ubuntu:vars]
+ansible_user=ubuntu
+ansible_password=Ab123456 
+ansible_connection=local
+
 [ubuntu]
+ubuntu16
+ubuntu18
+ubuntu20
 192.168.0.251 ansible_user=ubuntu ansible_password=Ab123456 ansible_connection=local
 
+[testeubuntu]
+ubuntu[16:20]
+
+[exos30:vars]
+ansible_connection=ansible.netcommon.network_cli
+ansible_network_os=community.network.exos
+ansible_user=alex
+ansible_password=Ab123456
+
+[exos30]
+192.168.111.205
+
 [teste]
-192.168.111.202 ansible_user=alex ansible_password=Ab123456 ansible_connection=local
 
 [exos22]
 192.168.111.101 ansible_user=alex ansible_password=Ab123456 ansible_connection=local
