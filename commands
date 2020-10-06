@@ -3,10 +3,12 @@
 Tips:
 List module: ansible-doc -l
 templates = jinja
-FROM = -c local = agentless
+FROM = -c local = agentless (use module features)
 yamllint = cli tool to check YML ident
 special group = all
 '*' = all
+ansible all -i bhost --list-hosts (list all valid hosts inside inventory)
+ansible-galaxy collection install ansible.netcommon (install ansible.netcommon.network_cli modules)
 
 ---> PING
 
@@ -20,6 +22,10 @@ command (raw):
 #ansible -i INVENTORY_FILE -m MODULE -A COMMAND -U USER -K GETPASSWORDPROMPT
 ansible ubuntu -i ahosts -m raw -a "ifconfig" -u alex -k -c local
 ansible -i ahosts -m raw -a "ifconfig" -u alex -k -c local ubuntu
+ansible ubuntu -i host -m command -a "ifconfig"
+ansible ubuntu -i host -m raw -a "ifconfig"
+ansible ubuntu -i host -m shell -a "ifconfig"
+ansible exos22 -i bhost -m raw -a "show run" (switch)
 
 ---> IOS COMMANDS
 

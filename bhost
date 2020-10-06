@@ -1,0 +1,11 @@
+[ubuntu]
+192.168.0.251 ansible_user=ubuntu ansible_password=Ab123456
+
+[exos22]
+192.168.111.101 ansible_user=alex ansible_password=Ab123456 ansible_connection=ansible.netcommon.network_cli
+
+[exos30]
+192.168.111.102 ansible_user=alex ansible_password=Ab123456 ansible_connection=ansible.netcommon.network_cli
+
+[nas]
+192.168.0.254 ansible_user=nas ansible_password=Ab123456aB654321
